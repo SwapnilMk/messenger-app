@@ -9,7 +9,7 @@ import {
 function Input() {
     return (
         <div>
-            i am input
+            Login form
         </div>
     )
 }

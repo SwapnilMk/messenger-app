@@ -2,7 +2,7 @@
 
 import { useCallback, useState } from "react";
 import { Field, FieldValues, SubmitHandler, useForm } from "react-hook-form";
-import Input from "@/app/components/input/input";
+import Input from "@/app/components/input/Input";
 
 type variant = "LOGIN" | "REGISTER";
 
