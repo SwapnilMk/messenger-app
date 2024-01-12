@@ -63,12 +63,12 @@ const AuthForm = () => {
 
 
                     {variant === 'REGISTER' && (
-                        <Input id="name" label="Name" type="text" register={register} errors={errors} />
+                        <Input id="name" label="Name" type="text" register={register} errors={errors} disabled={isLoading} />
                     )}
                     <div>
 
-                        <Input id="email" label="Email Address" type="email" register={register} errors={errors} />
-                        <Input id="password" label="Password" type="password" register={register} errors={errors} />
+                        <Input id="email" label="Email Address" type="email" register={register} errors={errors} disabled={isLoading} />
+                        <Input id="password" label="Password" type="password" register={register} errors={errors} disabled={isLoading} />
                     </div>
                     <Button
                         disabled={isLoading}
@@ -88,20 +88,20 @@ const AuthForm = () => {
                                 or continue with
                             </span>
                         </div>
-                        </div>
                     </div>
-                    <div className="mt-6 flex gap-2">
+                </div>
+                <div className="mt-6 flex gap-2">
 
-                        <AuthSocialButton 
+                    <AuthSocialButton
                         icon={BsGithub}
-                        onClick={()=> socialAction('github')}
-                        />
-                        <AuthSocialButton 
+                        onClick={() => socialAction('github')}
+                    />
+                    <AuthSocialButton
                         icon={BsGoogle}
-                        onClick={()=> socialAction('google')}
-                        />
-                    </div>
-                    <div className="
+                        onClick={() => socialAction('google')}
+                    />
+                </div>
+                <div className="
                     flex
                     gap-2
                     justify-center
@@ -110,17 +110,17 @@ const AuthForm = () => {
                     px-2
                     text-gray-500
                     ">
-                        <div>
-                            {variant === "LOGIN" ? "New to Messenger?" : "Already have an account?"}
-                        </div>
-                        <div
+                    <div>
+                        {variant === "LOGIN" ? "New to Messenger?" : "Already have an account?"}
+                    </div>
+                    <div
                         onClick={toggleVariant}
                         className="underline cursor-pointer"
-                        >
-                            {variant === "LOGIN" ? "Create an account" : "login"}
-                        </div>
+                    >
+                        {variant === "LOGIN" ? "Create an account" : "login"}
                     </div>
                 </div>
+            </div>
         </>
     )
 }
