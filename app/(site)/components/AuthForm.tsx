@@ -3,12 +3,13 @@
 import { useCallback, useState } from "react";
 import { Field, FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import Input from "@/app/components/input/Input";
+import Button from "@/app/components/Button";
 
 type variant = "LOGIN" | "REGISTER";
 
 
 const AuthForm = () => {
-    const [variant, setVariant] = useState<variant>("LOGIN");
+    const [variant, setVariant] = useState<variant>("REGISTER");
     const [isLoading, setIsLoading] = useState(false);
 
     const toggleVariant = useCallback(() => {
@@ -53,13 +54,28 @@ const AuthForm = () => {
         //next auth social sign in 
     }
 
-
-
-
     return (
         <>
             <form onSubmit={handleSubmit(onSubmit)}>
-                <Input />
+                <div>
+
+
+                {variant === 'REGISTER' && (
+                    <Input id="name" label="Name" type="text" register={register} errors={errors} />
+                    )}
+                    <div>
+
+                 <Input id="email" label="Email Address" type="email" register={register} errors={errors} />
+                 <Input id="password" label="Password" type="password" register={register} errors={errors} />
+                    </div>
+                    <Button 
+                    disabled={isLoading}
+                    fullWidth
+                    type="submit"
+                    >
+                        {variant === "LOGIN" ? "Sign in" : "Register"}
+                    </Button>
+                    </div>
             </form>
         </>
     )
