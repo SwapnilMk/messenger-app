@@ -1,9 +1,11 @@
 "use client";
 
 import { useCallback, useState } from "react";
+import { BsGoogle, BsGithub } from "react-icons/bs";
 import { Field, FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import Input from "@/app/components/input/Input";
 import Button from "@/app/components/Button";
+import AuthSocialButton from "./AuthSocialButton";
 
 type variant = "LOGIN" | "REGISTER";
 
@@ -60,23 +62,65 @@ const AuthForm = () => {
                 <div>
 
 
-                {variant === 'REGISTER' && (
-                    <Input id="name" label="Name" type="text" register={register} errors={errors} />
+                    {variant === 'REGISTER' && (
+                        <Input id="name" label="Name" type="text" register={register} errors={errors} />
                     )}
                     <div>
 
-                 <Input id="email" label="Email Address" type="email" register={register} errors={errors} />
-                 <Input id="password" label="Password" type="password" register={register} errors={errors} />
+                        <Input id="email" label="Email Address" type="email" register={register} errors={errors} />
+                        <Input id="password" label="Password" type="password" register={register} errors={errors} />
                     </div>
-                    <Button 
-                    disabled={isLoading}
-                    fullWidth
-                    type="submit"
+                    <Button
+                        disabled={isLoading}
+                        fullWidth
+                        type="submit"
                     >
                         {variant === "LOGIN" ? "Sign in" : "Register"}
                     </Button>
-                    </div>
+                </div>
             </form>
+            <div className="mt-6">
+                <div className="relative">
+                    <div className="absolute inset-0 flex item-center text-center">
+                        <div className="w-full border-t
+                        border-gray-300">
+                            <span className="bg-white px-2 text-gray-500 ">
+                                or continue with
+                            </span>
+                        </div>
+                        </div>
+                    </div>
+                    <div className="mt-6 flex gap-2">
+
+                        <AuthSocialButton 
+                        icon={BsGithub}
+                        onClick={()=> socialAction('github')}
+                        />
+                        <AuthSocialButton 
+                        icon={BsGoogle}
+                        onClick={()=> socialAction('google')}
+                        />
+                    </div>
+                    <div className="
+                    flex
+                    gap-2
+                    justify-center
+                    text-sm
+                    mt-6
+                    px-2
+                    text-gray-500
+                    ">
+                        <div>
+                            {variant === "LOGIN" ? "New to Messenger?" : "Already have an account?"}
+                        </div>
+                        <div
+                        onClick={toggleVariant}
+                        className="underline cursor-pointer"
+                        >
+                            {variant === "LOGIN" ? "Create an account" : "login"}
+                        </div>
+                    </div>
+                </div>
         </>
     )
 }
